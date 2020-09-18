@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const http = require('http'),
       fs   = require('fs'),
@@ -21,7 +21,7 @@ http.createServer((req, res) => {
 
   if(req.method === 'POST' && req.url ==='/upload') { // 上传图片
     req.setEncoding('binary');
-    var file;
+    let file;
 
     req.on('data', (data)=>{ file += data; });
     req.on('end', ()=>{
@@ -39,7 +39,7 @@ http.createServer((req, res) => {
 }).listen(8080);
 
 function sendPic(req, res) {
-  var info = req.url.split('/'),
+  let info = req.url.split('/'),
       pic  = path.join(__dirname, req.url),
       ext = info[2].split('.')[1];
 
@@ -61,8 +61,8 @@ function printRequest(req) {
 }
 
 function writePic(file) {
-  var data = file.split('\r\n');
-  var fileName = qs.parse(data[1].split(';')[2].trim())['filename'],
+  let data = file.split('\r\n');
+  let fileName = qs.parse(data[1].split(';')[2].trim())['filename'],
       start = data[0].length + data[1].length + data[2].length + data[3].length + 8,
       end   = file.indexOf('------WebKitFormBoundary', start),
       buf   = file.slice(start, end);
@@ -86,7 +86,7 @@ function show(res, page) {
 }
 
 function uploadPage() {
-  var images = fs.readdirSync('./images');
+  let images = fs.readdirSync('./images');
 
   return ''
       + '<!DOCTYPE html>'
@@ -108,7 +108,7 @@ function uploadPage() {
       + '</html>';
 }
 
-var errorPage = ''
+let errorPage = ''
     + '<!DOCTYPE html>'
     + '<html>'
       + '<head>'

@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const http = require('http'),
       fs   = require('fs'),
@@ -17,16 +17,16 @@ http.createServer((req, res) => {
     }
 
     req.setEncoding('binary');
-    var file;
+    let file;
     req.on('data', (data)=>{
       file += data;
     });
 
     req.on('end', ()=>{
       log(file.split('\r\n'));
-      var buf = file.split('\r\n')[4];
-      var files = file.split('\r\n')[1].split(';');
-      var fileName = qs.parse(files[2].trim())['filename'];
+      let buf = file.split('\r\n')[4];
+      let files = file.split('\r\n')[1].split(';');
+      let fileName = qs.parse(files[2].trim())['filename'];
       fileName = fileName.slice(1, fileName.length-1);
       fs.writeFileSync(fileName, buf, {'encoding': 'binary'});
     });
@@ -49,7 +49,7 @@ function show(res, page) {
   res.end(page);
 }
 
-var uploadPage = ''
+let uploadPage = ''
     + '<!DOCTYPE html>'
     + '<html>'
       + '<head>'
@@ -65,7 +65,7 @@ var uploadPage = ''
       + '</body>'
     + '</html>';
 
-var okPage = ''
+let okPage = ''
     + '<!DOCTYPE html>'
     + '<html>'
       + '<head>'
@@ -78,7 +78,7 @@ var okPage = ''
       + '</body>'
     + '</html>';
 
-var errorPage = ''
+let errorPage = ''
     + '<!DOCTYPE html>'
     + '<html>'
       + '<head>'

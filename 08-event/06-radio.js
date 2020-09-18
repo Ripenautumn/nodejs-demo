@@ -1,7 +1,5 @@
-#!/usr/bin/node
-
-var Radio = function(station) {
-  var _listeners = {};
+let Radio = function(station) {
+  let _listeners = {};
 
   setTimeout(() => {
     emit('open', station);

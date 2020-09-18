@@ -1,10 +1,10 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const cp = require('child_process');
 
 console.log('I am father process. PID:', process.pid);
 
-var child = cp.fork('./11-ipc-child.js');
+let child = cp.fork('./11-ipc-child.js');
 
 child.on('message', (msg) => {
   console.log('Child:', msg);

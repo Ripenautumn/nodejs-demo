@@ -1,11 +1,11 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
-var http = require('http'),
+let http = require('http'),
     cp   = require('child_process'),
     qs   = require('querystring'),
     result = '';
 
-http.createServer(function(req, res) {
+http.createServer((req, res) => {
   if(req.url != '/') {
     err(res);
     return;
@@ -30,7 +30,7 @@ http.createServer(function(req, res) {
 }).listen(8080);
 
 function err(res) {
-  var msg = 'Not found';
+  let msg = 'Not found';
 
   res.statusCode = 404;
   res.setHeader('Content-Length', msg.length);
@@ -40,7 +40,7 @@ function err(res) {
 }
 
 function show(res) {
-  var html = '<!DOCTYPE html>\n' +
+  let html = '<!DOCTYPE html>\n' +
              '<html>\n' +
              '  <head>\n' +
              '    <meta charset="UTF-8">\n' +
@@ -65,7 +65,7 @@ function show(res) {
 }
 
 function execCmd(req, res) {
-  var cmd = '';
+  let cmd = '';
 
   req.on('data', function(chunk) { cmd += chunk; });
   req.on('end', function() {

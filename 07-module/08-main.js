@@ -1,6 +1,6 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
-const circle = require('./08-circle'),
+const circle = require('circle'),
       log    = console.log;
 
 log('area:          \t', circle.area(20));

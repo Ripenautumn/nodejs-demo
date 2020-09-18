@@ -1,10 +1,10 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const http = require('http'),
       log  = console.log,
       qs   = require('querystring');
 
-var items = [];
+let items = [];
 
 http.createServer((req, res) => {
   if(req.url != '/') {
@@ -32,7 +32,7 @@ http.createServer((req, res) => {
 }).listen(8080);
 
 function show(res) {
-  var html = '<!DOCTYPE html>\n'
+  let html = '<!DOCTYPE html>\n'
             + '<html>\n'
             + '  <head>\n'
             + '    <meta charset="UTF-8">\n'
@@ -58,12 +58,12 @@ function show(res) {
 }
 
 function add(req, res) {
-  var body = '';
+  let body = '';
 
   req.on('data', function(chunk) { body += chunk; });
   req.on('end', function() {
     log(body);
-    
+
     if(body != '') {
       items.push(qs.parse(body).item);
     }
@@ -73,7 +73,7 @@ function add(req, res) {
 }
 
 function err(res) {
-  var msg = 'Not found!';
+  let msg = 'Not found!';
 
   res.statusCode = 404;
   res.setHeader('Content-Length', msg.length);

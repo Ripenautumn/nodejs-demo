@@ -1,12 +1,14 @@
-#!/usr/bin/node
+#!/usr/bin/env node
+
+const log = console.log;
 
 function Bomb(id) {
   var _id = id, timeID;
 
   this.start = () => {
-    console.log('#%d It will bomb after 3 second!', _id);
+    log('#%d It will bomb after 3 second!', _id);
     timeID = setTimeout(()=>{
-      console.log('#%d Bomb!', _id);
+      log('#%d Bomb!', _id);
     }, 3000);
   };
 

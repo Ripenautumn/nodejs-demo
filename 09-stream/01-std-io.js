@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const stdin  = process.stdin,
       stdout = process.stdout;
@@ -14,7 +14,7 @@ stdin.push('hello world!\n');
 
 //stdin.pipe(stdout);
 
-for(var c='a'.charCodeAt(0); c<='z'.charCodeAt(0); c++) {
+for(let c='a'.charCodeAt(0); c<='z'.charCodeAt(0); c++) {
   stdout.write(String.fromCharCode(c));
 }
 

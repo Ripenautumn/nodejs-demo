@@ -1,14 +1,14 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const http = require('http'),
       url  = require('url'),
       qs   = require('querystring'),
       log  = console.log;
 
-var items = [];
+let items = [];
 
 http.createServer((req, res) => {
-  var path = url.parse(req.url).pathname;
+  let path = url.parse(req.url).pathname;
 
   if(path != '/') {
     err(res);
@@ -23,7 +23,7 @@ http.createServer((req, res) => {
 }).listen(8080);
 
 function show(res) {
-  var html = '<!DOCTYPE html>\n'
+  let html = '<!DOCTYPE html>\n'
             + '<html>\n'
             + '  <head>\n'
             + '    <meta charset="UTF-8">\n'
@@ -49,7 +49,7 @@ function show(res) {
 }
 
 function add(req, res) {
-  var value = qs.parse(url.parse(req.url).query).item;
+  let value = qs.parse(url.parse(req.url).query).item;
 
   if(typeof value !== 'undefined') items.push(value);
 
@@ -58,7 +58,7 @@ function add(req, res) {
 }
 
 function err(res) {
-  var msg = 'Not found!';
+  let msg = 'Not found!';
 
   res.statusCode = 404;
   res.setHeader('Content-Length', msg.length);

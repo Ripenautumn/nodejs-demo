@@ -1,5 +1,3 @@
-#!/usr/bin/node
-
 const pi = Math.PI;
 
 module.exports = {

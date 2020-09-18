@@ -1,12 +1,10 @@
-#!/usr/bin/node
-
 function Dog(name, energy) {
-  var _listeners = {};
+  let _listeners = {};
 
   this.name = name;
   this.energy = energy;
 
-  var timer = setInterval(() => {
+  let timer = setInterval(() => {
     if(energy > 0) {
       emit('bark');
       this.energy--;

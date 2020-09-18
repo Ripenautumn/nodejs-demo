@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const stdin  = process.stdin,
       stdout = process.stdout,
@@ -16,6 +16,6 @@ MyTransform.prototype._transform = function(chunk, encoding, callback) {
   callback();
 };
 
-var tf = new MyTransform();
+let tf = new MyTransform();
 
 stdin.pipe(tf).pipe(stdout);

@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const Radio   = require('./04-radio.js'),
       station = {
@@ -6,7 +6,7 @@ const Radio   = require('./04-radio.js'),
         'name': 'music Radio'
       };
 
-var r = new Radio(station);
+let r = new Radio(station);
 
 r.on('play', (station) => {
   console.log('FM %s %s is playing!', station.freq, station.name);

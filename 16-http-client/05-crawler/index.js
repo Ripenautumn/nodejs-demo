@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const http    = require('https'),
       cheerio = require('cheerio'),
@@ -7,7 +7,7 @@ const http    = require('https'),
       addr    = 'https://segmentfault.com/lives/free';
 
 http.get(addr, (res) => {
-  var result = '';
+  let result = '';
 
   res.on('data', (data) => {
     result += data.toString('utf8');
@@ -16,10 +16,10 @@ http.get(addr, (res) => {
   res.on('end', () => {
     print(result);
 
-    var $ = cheerio.load(result);
+    let $ = cheerio.load(result);
     $('body').find('.card-body').each(function(){
       print($(this).html());
-      var cName = $(this).find('.card-title>a').text(),
+      let cName = $(this).find('.card-title>a').text(),
           cURL  = $(this).find('.card-title>a').attr('href');
 
       cURL = 'https://segmentfault.com' + cURL;

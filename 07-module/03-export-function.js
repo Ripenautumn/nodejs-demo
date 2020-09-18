@@ -1,8 +1,10 @@
-#!/usr/bin/node
-
 const pi = Math.PI;
 
 module.exports = (radius) => {
+  function diameter() {
+    return 2 * radius;
+  }
+
   function circumference() {
     return pi * 2 * radius;
   }
@@ -12,8 +14,9 @@ module.exports = (radius) => {
   }
 
   return {
-    area: area,
-    circumference: circumference
+    area,
+    diameter,
+    circumference
   };
 };
 

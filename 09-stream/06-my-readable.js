@@ -1,10 +1,10 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const Readable = require('stream').Readable;
 
-var c = 'a'.charCodeAt(0);
+let c = 'a'.charCodeAt(0);
 
-var MyReadable = function() {
+let MyReadable = function() {
   Readable.call(this);
 };
 
@@ -15,5 +15,5 @@ MyReadable.prototype._read = function() {
   if(c>'z'.charCodeAt(0)) this.push(null);
 };
 
-var rs = new MyReadable();
+let rs = new MyReadable();
 rs.pipe(process.stdout);

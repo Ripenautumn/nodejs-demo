@@ -1,7 +1,7 @@
-/*global document fetch $:true*/
+/*global document fetch: true*/
 $(function() {
   const $btnOK = $('button');
-  var items;
+  let items;
 
   $btnOK.click(add);
   get(show);
@@ -19,9 +19,9 @@ $(function() {
   }
 
   function show() {
-    var str = '<ul>\n';
+    let str = '<ul>\n';
 
-    for(var i=0; i<items.length; i++) {
+    for(let i=0; i<items.length; i++) {
       str += '<li>' + items[i] + '</li>\n';
     }
 
@@ -31,7 +31,7 @@ $(function() {
   }
 
   function add() {
-    var item = document.getElementById('todo').value;
+    let item = document.getElementById('todo').value;
 
     if(item === '') return;
     items.push(item);

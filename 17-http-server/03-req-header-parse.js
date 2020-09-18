@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const http = require('http'),
       log  = console.log;
@@ -14,13 +14,13 @@ http.createServer((req, res) =>{
   log('');
 
   log('authorization:', req.headers.authorization);
-  
-  var auth = req.headers.authorization;
+
+  let auth = req.headers.authorization;
 
   if(typeof auth !== 'undefined') {
     auth = auth.split(' ');
     if(auth[0] === 'Basic') {
-      var buf = new Buffer(auth[1], 'base64');
+      let buf = new Buffer(auth[1], 'base64');
       log('username & password:', buf.toString('utf8'));
     }
   } 

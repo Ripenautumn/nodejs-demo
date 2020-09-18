@@ -1,3 +1,5 @@
-module.exports.diameter = require('./diameter.js');
-module.exports.circumference = require('./circumference.js');
-module.exports.area = require('./area.js');
+module.exports = {
+  diameter: require('./lib/diameter'),
+  circumference: require('./lib/circumference'),
+  area: require('./lib/area')
+};

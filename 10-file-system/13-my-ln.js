@@ -1,9 +1,9 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const fs  = require('fs'),
       err = console.error;
 
-var opt, src, lnk;
+let opt, src, lnk;
 
 switch(process.argv.length) {
   case 4:
